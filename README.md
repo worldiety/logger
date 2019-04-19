@@ -3,6 +3,18 @@ This is NOT another structured logging library but a recommendation how to use d
 
 The advantage of this recommendation is, that you don't need any direct logging dependency but requires you to copy 60 lines of code. This allows any library integrator the usage of the logging facility which is required. Also it avoids conflicts or build failure if your logging dependency break for whatever reason.
 
+Usage is as simple as this
+```
+...
+err := someFunc()
+if err != nil {
+   logger.Info(Fields{"msg": "did someFunc", "tried": 1, "url": req.String(), "err": err.Error()})
+}
+...
+```
+
+
+The code to copy
 ```go
 package mypackage
 
